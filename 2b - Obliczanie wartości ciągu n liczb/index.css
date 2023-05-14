@@ -1,0 +1,11 @@
+#noNumbers-btn {
+    display: inline;
+}   
+
+#calcValue-btn {
+    display: none;
+}
+
+#newCalc-btn {
+    display: none;
+}

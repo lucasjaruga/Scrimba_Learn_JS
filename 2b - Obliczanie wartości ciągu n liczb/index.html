@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Obliczanie wartości ciągu n liczb</h1>
+        <form >
+            <label id="number_label">Podaj ile będzie liczb w ciągu:</label><br>
+            <input onfocus="this.value=''" type="text" id="number"><br>
+        </form>
+
+        <button id="noNumbers-btn" onclick="howManyNumbers()">Wprowadź ilość liczb jaka będzie w ciągu</button><br>
+        <button id="calcValue-btn" onclick="calcValue()">Wprowadź liczbę do ciągu</button>
+
+        <p id="answer"></p>
+
+        <button id="newCalc-btn" onclick="newCalc()">Obliczyć nowy ciąg?</button>
+
+        <script src="index.js"></script>
+    </body>
+</html>

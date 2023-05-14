@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <h1>Obliczanie potęgi danej liczby o danym wykładniku</h1>
+        <form >
+            <label>Podaj podstawę potęgi:</label><br>
+            <input onfocus="this.value=''" type="text" id="baseNumber"><br>
+            <label>Podaj wykładnik potęgi:</label><br>
+            <input onfocus="this.value=''" type="text" id="exponentNumber"><br>
+        </form>
+
+        <button id="calcValue-btn" onclick="calcValue()">Oblicz</button>
+
+        <p id="answer"></p>
+
+        <script src="index.js"></script>
+    </body>
+</html>
