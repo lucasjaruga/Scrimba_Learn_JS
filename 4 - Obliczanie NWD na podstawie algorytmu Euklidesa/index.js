@@ -8,11 +8,11 @@ function calcValue() {
     let sortedNumbers = []
 
     if( firstNumber > secondNumber){
-        sortedNumbers[0] = firstNumber
-        sortedNumbers[1] = secondNumber
+        sortedNumbers.push(firstNumber)
+        sortedNumbers.push(secondNumber)
     } else {
-        sortedNumbers[0] = secondNumber
-        sortedNumbers[1] = firstNumber
+        sortedNumbers.push(secondNumber)
+        sortedNumbers.push(firstNumber)
     }
     
     let reminder = 1
