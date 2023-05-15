@@ -13,11 +13,8 @@ function startGame() {
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
     
-    cards.push(firstCard)
-    cards.push(secondCard)
-    for(let i = 0; i < cards.length; i++){
-        sum += cards[i]
-    }
+    cards = [firstCard, secondCard]
+    sumOfCards = firstCard + secondCard
     renderGame()
 }
 
@@ -53,8 +50,10 @@ function renderGame() {
 }
 
 function newCard() {
-    let newCard = getRandomCard()
-    sumOfCards += newCard
-    cards.push(newCard)
-    renderGame()
+    if(isAlive === true && blackJack === false){
+        let newCard = getRandomCard()
+        sumOfCards += newCard
+        cards.push(newCard)
+        renderGame()
+    }
 }
