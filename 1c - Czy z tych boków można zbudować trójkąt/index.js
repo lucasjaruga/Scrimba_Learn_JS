@@ -1,12 +1,8 @@
-let firstSide
-let secondSide
-let thirdSide
-
 function verifySidesOfTriangle() {
     
-    firstSide = Number(document.getElementById("firstNumber").value)
-    secondSide = Number(document.getElementById("secondNumber").value)
-    thirdSide = Number(document.getElementById("thirdNumber").value)
+    let firstSide = Number(document.getElementById("firstNumber").value)
+    let secondSide = Number(document.getElementById("secondNumber").value)
+    let thirdSide = Number(document.getElementById("thirdNumber").value)
 
     let answer = document.getElementById("answer")
 

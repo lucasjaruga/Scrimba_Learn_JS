@@ -10,10 +10,10 @@ function calcFactorial() {
             answer.innerText = "Silnia wynosi: 1"     
         } else {
             let result = number*(number-1)
-            --number
+            number--
             while(number > 1){
                 result = result * (number-1)
-                --number
+                number--
             }
             answer.innerText = "Silnia wynosi: " + result
         }

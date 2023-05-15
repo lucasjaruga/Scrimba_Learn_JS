@@ -1,8 +1,9 @@
-let firstSide
-let secondSide
+document.getElementById("firstSide").addEventListener(`click`, calculateArea)
+
 
 function calculateArea() {
-    
+    let firstSide
+    let secondSide
     firstSide = document.getElementById("firstSide").value
 
     secondSide = document.getElementById("secondSide").value

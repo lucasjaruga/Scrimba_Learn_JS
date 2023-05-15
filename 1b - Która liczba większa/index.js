@@ -1,7 +1,9 @@
-let firstNumber
-let secondNumber
+
 
 function compareNumbers() {
+    
+    let firstNumber
+    let secondNumber
     
     firstNumber = Number(document.getElementById("firstNumber").value)
     secondNumber = Number(document.getElementById("secondNumber").value)
