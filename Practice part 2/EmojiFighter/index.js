@@ -12,7 +12,7 @@ fightButton.addEventListener("click", function() {
 
 /**
  * @function - return a random number based on the Array lenght
- * @param array - array length which we wanna use to calculate random index
+ * @param array - array which length we wanna use to calculate random index
 */
 function generateRandomIndex(array){
     return Math.floor(Math.random() * array.length)
