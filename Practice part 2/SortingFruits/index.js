@@ -11,13 +11,13 @@ let orangeShelf = document.getElementById("orange-shelf")
  * @param arrayWithFruits - array which stores fruits to sort
  */
 function sortFruits(arrayWithFruits){
-    for(let i = 0; i < fruit.length; i++) {
+    for(let i = 0; i < arrayWithFruits.length; i++) {
         if(fruit[i] === "🍎"){
-            appleShelf.textContent += fruit[i]
+            appleShelf.textContent += arrayWithFruits[i]
         } else {
-            orangeShelf.textContent += fruit[i]
+            orangeShelf.textContent += arrayWithFruits[i]
         }
     }
 }
 
-sortFruits()
+sortFruits(fruit)
