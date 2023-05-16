@@ -71,18 +71,22 @@ const data = [{
 Object.freeze(data);
 
 function gameFilter(game, numberOfPlayers, gameGenre) {
+
     console.log(`numberOfPlayers: ${numberOfPlayers}, gameGenre: ${gameGenre}`)
+
     const minPlayers = game.minPlayers <= numberOfPlayers;
-        const maxPlayers = game.maxPlayers >= numberOfPlayers;
-        const genre = game.genre === gameGenre;
-        return minPlayers && maxPlayers && genre;
+    const maxPlayers = game.maxPlayers >= numberOfPlayers;
+    const genre = game.genre === gameGenre;
+    
+    return minPlayers && maxPlayers && genre;
 }
 
 /**
  * @param numberOfPlayers - number of players we want to search for 
- * @param genre - type of game
+ * @param gameGenre - genre of game
  */
 function whichGame(numberOfPlayers, gameGenre) {
+    
     const result = data.filter(game => {
         const minPlayers = game.minPlayers <= numberOfPlayers;
         const maxPlayers = game.maxPlayers >= numberOfPlayers;

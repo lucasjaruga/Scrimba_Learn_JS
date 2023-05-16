@@ -1,3 +1,8 @@
+let player = {
+    name: "Lucas",
+    chips: 240
+}
+
 let cards = []
 let sumOfCards = 0
 let blackJack = false
@@ -6,6 +11,9 @@ let  message = ""
 let messageEl = document.getElementById("message-el")
 let sumEl = document.getElementById("sum-el")
 let cardsEl = document.getElementById("cards-el")
+let playerEl = document.getElementById("player-el")
+
+playerEl.textContent = player.name + ", chips: " + player.chips + "$"
 
 function startGame() {
     isAlive = true
