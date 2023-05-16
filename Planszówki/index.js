@@ -56,21 +56,12 @@ const data = [{
 }
 ];
 
-// homework: zwrócić posortowane po tytule bez edycji (pracować na kopii arraya - deepcopy lub deepclone)
-
-// 2. jaki jest średni czas gry w danym gatunku. Przedstawić w formie obiektu i wyświetlić w konsoli
-// zrobić z tego tabelę w htmlu i podstawić wyniki
-/**
- * {
- *  "economy" : 90,
- *  "push your luck": 20
- * ....
- * }
- */
-
 Object.freeze(data);
 
-function gameFilter(game, numberOfPlayers, gameGenre) {
+/**
+ * @function - this is just a filter patern for other function.  Use it if you wanna filter boardgames by noPlayers and genre
+ */
+function gameFilterByNoPlayersAndGenre(game, numberOfPlayers, gameGenre) {
 
     console.log(`numberOfPlayers: ${numberOfPlayers}, gameGenre: ${gameGenre}`)
 
@@ -94,7 +85,7 @@ function whichGame(numberOfPlayers, gameGenre) {
         return minPlayers && maxPlayers && genre;
     });
 
-    const result2 = data.filter(gameFilter);
+    const result2 = data.filter(gameFilterByNoPlayersAndGenre);
 
     result.sort(compareGameTime)
   
@@ -111,3 +102,38 @@ console.log(`*********`)
 console.log(whichGame(2, "party"))
 console.log(`*********`)
 console.log(whichGame(8, "party"))
+
+
+// HOMEWORK
+// 1. Zwrócić posortowane po tytule, bez edycji oryginalnej tablicy (pracować na kopii arraya - deepcopy lub deepclone)
+
+// creating deepcopy of array with boardgames
+let data_deepcopy = JSON.parse(JSON.stringify(data))
+
+/**
+ * @function - this is just a filter patern for other function. Use it if you wanna filter boardgames by titles
+ */
+function gameFilterByTitle(game) {
+    const gameTitle = game.name;
+    return gameTitle;
+}
+
+/**
+ * @param arrayWithBoardGames - array with boardgames which we wanna sort by theirs titles
+ */
+function sortByTitle(arrayWithBoardGames){
+    
+}
+
+
+
+// 2. jaki jest średni czas gry w danym gatunku. Przedstawić w formie obiektu i wyświetlić w konsoli
+// 3. zrobić z tego tabelę w htmlu i podstawić wyniki
+
+/**
+ * {
+ *  "economy" : 90,
+ *  "push your luck": 20
+ * ....
+ * }
+ */
