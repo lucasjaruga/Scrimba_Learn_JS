@@ -145,16 +145,27 @@ function sortByTitle(game1, game2){
 
 let data_deepcopy2 = JSON.parse(JSON.stringify(data))
 
-function whichGame3(gameGenre){
-    const result = data_deepcopy2.filter(game => {
-        return game.genre === gameGenre
-    })
+let genresToCheck = [`party`, `push your luck`, `strategy`]
 
-    let timeSum = sumGamesTime(result)
-    let noGames = result.length
-    let avgTime = calcAvgTime(timeSum, noGames)
+function avgTimeForGenre(arrayWithGenres){
 
-    return console.log(`Średni czas gier z gatunku ${gameGenre} wynosi: ${avgTime}.`)
+    let arrayWithResults = new Map()
+
+    for(let i = 0; i < arrayWithGenres.length; i++){
+        const result = data_deepcopy2.filter(game => {
+            return game.genre === arrayWithGenres[i]
+        })
+
+        let timeSum = sumGamesTime(result)
+        let noGames = result.length
+        let avgTime = calcAvgTime(timeSum, noGames)
+
+        arrayWithResults.set(arrayWithGenres[i], avgTime)
+    }
+    
+    let finalResult = Object.fromEntries(arrayWithResults)
+
+    return console.log(finalResult)
 }
 
 function sumGamesTime(arrayWithGames){
@@ -172,11 +183,7 @@ function calcAvgTime(time, noGames){
 }
 
 console.log("---------WYNIK OKREŚLENIA ŚREDNIEGO CZASU GRY DLA DANEGO GATUNKU---------")
-whichGame3("party")
-console.log(`*********`)
-whichGame3("push your luck")
-console.log(`*********`)
-whichGame3("strategy")
+avgTimeForGenre(genresToCheck)
 
 // 3. zrobić z tego tabelę w htmlu i podstawić wyniki
 
