@@ -96,6 +96,7 @@ function compareGameTime(game1, game2){
     return game2.time - game1.time
 }
 
+console.log("---------WYNIK SORTOWANIA PO ILOŚCI GRACZY ORAZ GATUNKU---------")
 // console.log(whichGame(1, "party"))
 // console.log(`*********`)
 console.log(whichGame(2, "party"))
@@ -111,7 +112,7 @@ let data_deepcopy = JSON.parse(JSON.stringify(data))
 
 function whichGame2(numberOfPlayers, gameGenre) {
     
-    const result = data.filter(game => {
+    const result = data_deepcopy.filter(game => {
         const minPlayers = game.minPlayers <= numberOfPlayers;
         const maxPlayers = game.maxPlayers >= numberOfPlayers;
         const genre = game.genre === gameGenre;
@@ -125,6 +126,7 @@ function whichGame2(numberOfPlayers, gameGenre) {
     return result
 }
 
+console.log("---------WYNIK SORTOWANIA PO TYTULE---------")
 console.log(whichGame2(2, "party"))
 console.log(`*********`)
 console.log(whichGame2(8, "party"))
@@ -139,21 +141,43 @@ function sortByTitle(game1, game2){
     return name1.localeCompare(name2)
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // 2. jaki jest średni czas gry w danym gatunku. Przedstawić w formie obiektu i wyświetlić w konsoli
+
+let data_deepcopy2 = JSON.parse(JSON.stringify(data))
+
+function whichGame3(gameGenre){
+    const result = data_deepcopy2.filter(game => {
+        return game.genre === gameGenre
+    })
+
+    let timeSum = sumGamesTime(result)
+    let noGames = result.length
+    let avgTime = calcAvgTime(timeSum, noGames)
+
+    return console.log(`Średni czas gier z gatunku ${gameGenre} wynosi: ${avgTime}.`)
+}
+
+function sumGamesTime(arrayWithGames){
+    let result = 0
+    for(let i = 0; i < arrayWithGames.length; i++){
+        result += arrayWithGames[i].time
+    }
+
+    return result
+}
+
+function calcAvgTime(time, noGames){
+    return time / noGames
+
+}
+
+console.log("---------WYNIK OKREŚLENIA ŚREDNIEGO CZASU GRY DLA DANEGO GATUNKU---------")
+whichGame3("party")
+console.log(`*********`)
+whichGame3("push your luck")
+console.log(`*********`)
+whichGame3("strategy")
+
 // 3. zrobić z tego tabelę w htmlu i podstawić wyniki
 
 /**
