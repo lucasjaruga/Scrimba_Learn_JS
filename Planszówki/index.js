@@ -54,7 +54,7 @@ const data = [{
     time: 30,
     genre: `strategy`
 }
-];
+]
 
 Object.freeze(data);
 
@@ -85,45 +85,71 @@ function whichGame(numberOfPlayers, gameGenre) {
         return minPlayers && maxPlayers && genre;
     });
 
-    const result2 = data.filter(gameFilterByNoPlayersAndGenre);
+    // const result2 = data.filter(gameFilterByNoPlayersAndGenre);
 
-    result.sort(compareGameTime)
-  
+    result.sort(compareGameTime)    
 
     return result
 }
 
 function compareGameTime(game1, game2){
-    return game1.time - game2.time
+    return game2.time - game1.time
 }
 
-console.log(whichGame(1, "party"))
-console.log(`*********`)
+// console.log(whichGame(1, "party"))
+// console.log(`*********`)
 console.log(whichGame(2, "party"))
 console.log(`*********`)
 console.log(whichGame(8, "party"))
-
+console.log(`*********`)
+console.log(whichGame(3, "strategy"))
 
 // HOMEWORK
 // 1. Zwrócić posortowane po tytule, bez edycji oryginalnej tablicy (pracować na kopii arraya - deepcopy lub deepclone)
 
-// creating deepcopy of array with boardgames
 let data_deepcopy = JSON.parse(JSON.stringify(data))
 
-/**
- * @function - this is just a filter patern for other function. Use it if you wanna filter boardgames by titles
- */
-function gameFilterByTitle(game) {
-    const gameTitle = game.name;
-    return gameTitle;
+function whichGame2(numberOfPlayers, gameGenre) {
+    
+    const result = data.filter(game => {
+        const minPlayers = game.minPlayers <= numberOfPlayers;
+        const maxPlayers = game.maxPlayers >= numberOfPlayers;
+        const genre = game.genre === gameGenre;
+        return minPlayers && maxPlayers && genre;
+    });
+
+    // const result2 = data.filter(gameFilterByNoPlayersAndGenre);
+
+    result.sort(sortByTitle)    
+
+    return result
 }
 
-/**
- * @param arrayWithBoardGames - array with boardgames which we wanna sort by theirs titles
- */
-function sortByTitle(arrayWithBoardGames){
-    
+console.log(whichGame2(2, "party"))
+console.log(`*********`)
+console.log(whichGame2(8, "party"))
+console.log(`*********`)
+console.log(whichGame2(3, "strategy"))
+
+// sorting function
+function sortByTitle(game1, game2){
+    let name1 = game1.name.toLowerCase()
+    let name2 = game2.name.toLowerCase()
+
+    return name1.localeCompare(name2)
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
