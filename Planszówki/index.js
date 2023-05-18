@@ -199,16 +199,40 @@ avgTimeForGenre(genresToCheck)
 // 3. zrobić z tego tabelę w htmlu i podstawić wyniki
 
 function generateTable(noRowsToCreate, objectWithData) {
-    let generatedTable = ""
-    const tableEL = document.getElementById("table-el")
-    const objectParam = Object.getOwnPropertyNames(objectWithData)
+//     let generatedTable = ""
+//     const tableEL = document.getElementById("table-el")
+       const objectParam = Object.getOwnPropertyNames(objectWithData)
     
+//    for (let i = 0; i < noRowsToCreate; i++) {
+//         generatedTable += `<tr>
+//                             <td>${objectParam[i]}</td>
+//                             <td>${objectWithData[objectParam[i]]}</td>
+//                             </tr>`
+//    }
+    
+//    tableEL.innerHTML = generatedTable
+
+   const table = document.createElement("table")
+   const tableBody = document.createElement("body")
+
    for (let i = 0; i < noRowsToCreate; i++) {
-        generatedTable += `<tr>
-                            <td>${objectParam[i]}</td>
-                            <td>${objectWithData[objectParam[i]]}</td>
-                            </tr>`
-   }
-    
-   tableEL.innerHTML = generatedTable
+        const row = document.createElement("tr")
+
+        for (let j = 0; j < 2; j++){
+            const cell = document.createElement("td")
+            let cellText
+            if(j === 0){
+                cellText = document.createTextNode(objectParam[i])
+            } else {
+                cellText = document.createTextNode(objectWithData[objectParam[i]])
+            }
+            cell.appendChild(cellText)
+            row.appendChild(cell)
+        }
+
+        tableBody.appendChild(row)
+    }
+
+    table.appendChild(tableBody)
+    document.body.appendChild(table)
 }
