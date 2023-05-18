@@ -143,13 +143,22 @@ function sortByTitle(game1, game2){
 
 // 2. jaki jest średni czas gry w danym gatunku. Przedstawić w formie obiektu i wyświetlić w konsoli
 
+/**
+ * {
+ *  "economy" : 90,
+ *  "push your luck": 20
+ * ....
+ * }
+ */
+
 let data_deepcopy2 = JSON.parse(JSON.stringify(data))
 
 let genresToCheck = [`party`, `push your luck`, `strategy`]
 
+
 function avgTimeForGenre(arrayWithGenres){
 
-    let arrayWithResults = new Map()
+    let mapWithResults = new Map()
 
     for(let i = 0; i < arrayWithGenres.length; i++){
         const result = data_deepcopy2.filter(game => {
@@ -160,12 +169,14 @@ function avgTimeForGenre(arrayWithGenres){
         let noGames = result.length
         let avgTime = calcAvgTime(timeSum, noGames)
 
-        arrayWithResults.set(arrayWithGenres[i], avgTime)
+        mapWithResults.set(arrayWithGenres[i], avgTime)
     }
     
-    let finalResult = Object.fromEntries(arrayWithResults)
+    let finalResult = Object.fromEntries(mapWithResults)
 
-    return console.log(finalResult)
+    // return console.log(finalResult)
+    let noRowsInTable = arrayWithGenres.length
+    generateTable(noRowsInTable, finalResult)
 }
 
 function sumGamesTime(arrayWithGames){
@@ -187,10 +198,33 @@ avgTimeForGenre(genresToCheck)
 
 // 3. zrobić z tego tabelę w htmlu i podstawić wyniki
 
-/**
- * {
- *  "economy" : 90,
- *  "push your luck": 20
- * ....
- * }
- */
+function generateTable(noRowsToCreate, objectWithData) {
+    const table = document.getElement("body").createElement("table")
+    const tableBody = document.createElement("tbody")
+
+    // creates array with names of all properties of a given object
+    const objParam = objectWithData.getOwnPropertyNames()
+
+    for(let i = 0; i < noRowsToCreate; i++) {
+
+        const row = document.createElement("tr")
+
+        for(let j = 0; j < 2; j++){
+            if(j === 0) {
+                const cell = document.createElement("td")
+                const cellText = document.createTextNode(objParam[i])
+                cell.appendChild(cellText)
+                row.appendChild(cell)
+            } else {
+                const cell = document.createElement("td")
+                const cellText = document.createTextNode(objectWithData[objParam[i]])
+                cell.appendChild(cellText)
+                row.appendChild(cell)
+            }            
+        }
+
+        tableBody.appendChild(row)
+    }
+table.appendChild(tableBody)
+document.body.appendChild(table)
+}
