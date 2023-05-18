@@ -6,8 +6,28 @@ let myLeads = []
 saveButton.addEventListener("click", function (){
     myLeads.push(inputEL.value)
     console.log(myLeads)
+    inputEL.value = ""
+    renderLeads()
 })
 
-for (let i = 0; i < myLeads.length; i++){
-    ulEl.innerHTML += "<li>" + myLeads[i] + "</li>"
+function renderLeads() {
+    let listItems = ""
+    for (let i = 0; i < myLeads.length; i++) {
+        listItems += "<li>" + myLeads[i] + "</li>"
+    }
+    ulEl.innerHTML = listItems
 }
+
+
+
+
+
+
+
+
+
+
+
+// const li = document.createElement("li")
+// li.textContent = myLeads[i]
+// ulEl.append(li)
