@@ -7,6 +7,9 @@ saveButton.addEventListener("click", function (){
     myLeads.push(inputEL.value)
     console.log(myLeads)
     inputEL.value = ""
+
+    localStorage.setItem("leads", JSON.stringify(myLeads))
+
     renderLeads()
 })
 
